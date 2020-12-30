@@ -139,7 +139,7 @@ spansLayout = \case
       else MultiLine
 
 isLineTooLong :: SrcSpan -> Bool
-isLineTooLong (RealSrcSpan span) = srcSpanEndCol span > 100
+isLineTooLong (RealSrcSpan span) = srcSpanEndCol span >= 100
 isLineTooLong (UnhelpfulSpan _) = False
 
 -- | Insert a space if enclosing layout is single-line, or newline if it's
