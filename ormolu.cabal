@@ -141,7 +141,7 @@ library
     else
         ghc-options: -O2 -Wall
 
-executable ormolu
+executable cpmformat
     main-is:          Main.hs
     hs-source-dirs:   app
     other-modules:    Paths_ormolu
