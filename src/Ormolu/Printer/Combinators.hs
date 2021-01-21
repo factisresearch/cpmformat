@@ -131,8 +131,16 @@ spansLayout = \case
   [] -> SingleLine
   (x : xs) ->
     if isOneLineSpan (foldr combineSrcSpans x xs)
-      then SingleLine
+      then
+        if isLineTooLong (foldr combineSrcSpans x xs) then
+          MultiLine
+        else
+          SingleLine
       else MultiLine
+
+isLineTooLong :: SrcSpan -> Bool
+isLineTooLong (RealSrcSpan span) = srcSpanEndCol span >= 100
+isLineTooLong (UnhelpfulSpan _) = False
 
 -- | Insert a space if enclosing layout is single-line, or newline if it's
 -- multiline.

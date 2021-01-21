@@ -69,7 +69,7 @@ p_hsModule mstackHeader shebangs pragmas qualifiedPost HsModule {..} = do
         txt "where"
         newline
     newline
-    forM_ (normalizeImports hsmodImports) (located' (p_hsmodImport qualifiedPost))
+    forM_ hsmodImports (located' (p_hsmodImport qualifiedPost))
     newline
     switchLayout (getLoc <$> hsmodDecls) $ do
       p_hsDecls Free hsmodDecls
